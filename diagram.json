@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "author": "esp-siren",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": -4.76,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 60,
+      "left": 180,
+      "attrs": {
+        "mode": "smooth",
+        "volume": "0.8"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "led_resistor",
+      "top": 170,
+      "left": 180,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led",
+      "top": 170,
+      "left": 260,
+      "attrs": {
+        "color": "blue",
+        "label": "GPIO2 LED"
+      }
+    }
+  ],
+  "connections": [
+    ["esp:TX", "$serialMonitor:RX", "", []],
+    ["esp:RX", "$serialMonitor:TX", "", []],
+    ["esp:25", "buzzer:2", "green", []],
+    ["buzzer:1", "esp:GND.1", "black", []],
+    ["esp:2", "led_resistor:1", "blue", []],
+    ["led_resistor:2", "led:A", "blue", []],
+    ["led:C", "esp:GND.2", "black", []]
+  ]
+}
